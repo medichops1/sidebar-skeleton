@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Certificate stack for CloudFront distribution
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: Domain name for the certificate
+  ProjectName:
+    Type: String
+    Description: Name of the project
+
+Resources:
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref DomainName
+      ValidationMethod: DNS
+
+Outputs:
+  CertificateArn:
+    Description: ARN of the created certificate
+    Value: !Ref Certificate
+    Export:
+      Name: !Sub ${ProjectName}-CertificateArn

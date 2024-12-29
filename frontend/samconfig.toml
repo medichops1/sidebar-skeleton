@@ -1,0 +1,27 @@
+version = 0.1
+
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "CiiV-SkinnyATS"
+resolve_s3 = true
+s3_prefix = "CiiV-SkinnyATS"
+region = "eu-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "ProjectName=\"ciiv-skinnyats\" Environment=\"dev\" DomainName=\"ats.dev.cvtrack.uk\" CertificateArn=\"arn:aws:acm:us-east-1:533267212638:certificate/5552de14-e02f-44c2-8393-50f9906175fd\" HostedZoneId=\"Z0562374GIU5MK3WVUT5\""
+image_repositories = []
+
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "CiiV-SkinnyATS"
+resolve_s3 = true
+s3_prefix = "CiiV-SkinnyATS"
+region = "eu-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = [
+    "ProjectName=CiiV-SkinnyATS",
+    "DomainName=ats.ciivsoft.com"
+] 
